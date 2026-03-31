@@ -8,7 +8,7 @@ export default function Premium() {
   useEffect(() => {
     getSession().then(({ data }) => {
       // Exemplo: plano do usuário pode ser obtido do token ou Supabase
-      const plan = data.session?.user?.plan || "free";
+      const plan = data.session?.user?.user_metadata?.plan || "free";
       if (plan !== "premium") {
         router.replace("/pt-BR/premium");
       }
