@@ -9,12 +9,18 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
 
 export const runtime = "nodejs";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest) {
   try {
+    // Extrai o id da URL
+    const url = new URL(req.url);
+    const paths = url.pathname.split("/");
+    const id = paths[paths.indexOf("analyze") + 1];
+
     const fakeGame = {
       home_team: "Time A",
       away_team: "Time B",
-      league: "Liga Exemplo"
+      league: "Liga Exemplo",
+      id: id || "desconhecido"
     };
     const prompt = `
 Você é um analista esportivo profissional.
@@ -23,13 +29,14 @@ Analise a partida:
 
 ${fakeGame.home_team} vs ${fakeGame.away_team}
 Liga: ${fakeGame.league}
+ID: ${fakeGame.id}
 
 Faça:
-	•	visão geral
-	•	forma recente
-	•	análise tática
-	•	probabilidades
-	•	conclusão
+  • visão geral
+  • forma recente
+  • análise tática
+  • probabilidades
+  • conclusão
 
 Nunca recomende apostas.
 `;
