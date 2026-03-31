@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateAnalysis } from '../../../../lib/analyzer';
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest) {
+  // Extrai o id da URL
+  const url = new URL(req.url);
+  const paths = url.pathname.split("/");
+  const id = paths[paths.indexOf("analyze") + 1];
   const { prompt } = await req.json();
   const analysis = await generateAnalysis(prompt);
-  return NextResponse.json({ analysis });
+  return NextResponse.json({ analysis, id });
 }
 
 export const runtime = "nodejs";
