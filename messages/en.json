@@ -1,0 +1,11 @@
+{
+  "welcome": "Welcome to FlowAI Sports",
+  "login": "Login",
+  "register": "Register",
+  "dashboard": "User Dashboard",
+  "admin": "Admin Dashboard",
+  "premium": "Premium Subscription",
+  "about": "About FlowAI Sports",
+  "football": "Football",
+  "basketball": "Basketball"
+}

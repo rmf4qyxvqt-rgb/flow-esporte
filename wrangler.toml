@@ -1,0 +1,8 @@
+name = "flowai-sports"
+main = ".output/server/index.mjs"
+compatibility_date = "2024-03-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+account_id = "YOUR_CLOUDFLARE_ACCOUNT_ID"
+route = ""
+usage_model = "bundled"
